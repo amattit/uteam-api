@@ -4,6 +4,8 @@ import { useContainer } from 'class-validator';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './AppModule';
 
+declare const module: any;
+
 const {
   PORT: port = 3000,
   HOST: host = '0.0.0.0',
@@ -43,6 +45,11 @@ const isDevelopment = nodeEnv === 'development';
 
   try {
     await app.listen(port, host);
+
+    if (module.hot) {
+      module.hot.accept();
+      module.hot.dispose(() => app.close());
+    }
   } catch (error) {
     console.error(`${new Date().toISOString()} - error - NestBootstrap@main.ts - ${error.stack || error.message}`);
     process.exit(1);
