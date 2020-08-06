@@ -1,8 +1,9 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { ImgurImageRepository } from './ImgurImageRepository';
+import { imgurConfig } from './config/imgurConfig';
 
 @Module({
-  imports: [HttpModule.register({ baseURL: 'https://api.imgur.com/3', headers: { Authorization: 'Client-ID 91e8d85c668e81d' } })],
+  imports: [HttpModule.register({ baseURL: imgurConfig.url, headers: { Authorization: `Client-ID ${imgurConfig.clientId}` } })],
   providers: [
     {
       provide: ImgurImageRepository,
