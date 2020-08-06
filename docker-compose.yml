@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  uteam-api:
+    build:
+      context: .
+    env_file: api.env
+    environment:
+      - 'RUN_ENV=development'
+      - DB_NAME=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - .:/home/node/api
+    ports:
+      - 3000:3000
+      - 9229:9229
+    depends_on:
+      - uteam-db
+
+  uteam-db:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+networks:
+  default:
+    name: ${DOCKER_NETWORK}

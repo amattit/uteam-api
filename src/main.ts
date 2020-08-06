@@ -7,8 +7,8 @@ import { AppModule } from './AppModule';
 declare const module: any;
 
 const {
-  PORT: port = 3000,
-  HOST: host = '0.0.0.0',
+  API_HOST: host = '0.0.0.0',
+  API_PORT: port = 3000,
   NODE_ENV: nodeEnv = 'development',
 } = process.env;
 
