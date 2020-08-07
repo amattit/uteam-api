@@ -14,11 +14,11 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         },
         {
           name: 'title',
-          type: 'vachar',
+          type: 'varchar',
         },
         {
           name: 'shareType',
-          type: 'vachar',
+          type: 'varchar',
         },
         {
           name: 'shareValue',
@@ -27,12 +27,12 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         },
         {
           name: 'aboutVacancy',
-          type: 'vachar',
+          type: 'varchar',
           isNullable: true,
         },
         {
           name: 'aboutFeature',
-          type: 'vachar',
+          type: 'varchar',
           isNullable: true,
         },
         {

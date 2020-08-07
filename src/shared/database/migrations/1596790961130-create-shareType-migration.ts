@@ -12,7 +12,7 @@ export class createShareTypeMigration1596790961130 implements MigrationInterface
         },
         {
           name: 'title',
-          type: 'string',
+          type: 'varchar',
         },
       ],
     }), true, true);
