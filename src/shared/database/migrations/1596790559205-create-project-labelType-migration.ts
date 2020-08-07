@@ -33,7 +33,7 @@ export class createProjectLabelTypeMigration1596790559205 implements MigrationIn
     await queryRunner.createForeignKey('ProjectLabelType_Relations', new TableForeignKey({
       columnNames: ['labelId'],
       referencedColumnNames: ['id'],
-      referencedTableName: 'Label',
+      referencedTableName: 'LabelType',
       onDelete: 'CASCADE',
     }));
   }
