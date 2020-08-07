@@ -9,16 +9,16 @@ export class createFavoriteUsersMigration1596792000198 implements MigrationInter
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {
           name: 'userId',
-          type: 'int',
+          type: 'uuid',
         },
         {
           name: 'favoriteUserId',
-          type: 'int',
+          type: 'uuid',
         },
       ],
     }), true, true);

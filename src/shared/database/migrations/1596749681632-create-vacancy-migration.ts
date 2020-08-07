@@ -9,7 +9,7 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {
@@ -41,11 +41,11 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         },
         {
           name: 'ownerId',
-          type: 'int',
+          type: 'uuid',
         },
         {
           name: 'projectId',
-          type: 'int',
+          type: 'uuid',
         },
         {
           name: 'created',

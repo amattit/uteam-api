@@ -7,7 +7,7 @@ export class createLabelMigration1596749035815 implements MigrationInterface {
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {

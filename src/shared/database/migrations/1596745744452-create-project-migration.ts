@@ -9,7 +9,7 @@ export class createProjectMigration1596745744452 implements MigrationInterface {
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {
@@ -31,7 +31,7 @@ export class createProjectMigration1596745744452 implements MigrationInterface {
         },
         {
           name: 'ownerId',
-          type: 'int',
+          type: 'uuid',
         },
         {
           name: 'imagePath',

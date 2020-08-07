@@ -9,16 +9,16 @@ export class createFavoriteProjectsMigration1596791975950 implements MigrationIn
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {
           name: 'userId',
-          type: 'int',
+          type: 'uuid',
         },
         {
           name: 'projectId',
-          type: 'int',
+          type: 'uuid',
         },
       ],
     }), true, true);

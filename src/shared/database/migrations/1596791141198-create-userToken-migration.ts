@@ -9,7 +9,7 @@ export class createUserTokenMigration1596791141198 implements MigrationInterface
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {
@@ -22,7 +22,7 @@ export class createUserTokenMigration1596791141198 implements MigrationInterface
         },
         {
           name: 'userID',
-          type: 'int',
+          type: 'uuid',
         },
       ],
     }), true, true);

@@ -7,7 +7,7 @@ export class createShareTypeMigration1596790961130 implements MigrationInterface
       columns: [
         {
           name: 'id',
-          type: 'int',
+          type: 'uuid',
           isPrimary: true,
         },
         {
