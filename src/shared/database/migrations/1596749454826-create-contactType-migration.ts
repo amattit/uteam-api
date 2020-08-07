@@ -7,7 +7,7 @@ export class createContactTypeMigration1596749454826 implements MigrationInterfa
       columns: [
         {
           name: 'id',
-          type: 'uuid',
+          type: 'varchar(36)',
           isPrimary: true,
         },
         {

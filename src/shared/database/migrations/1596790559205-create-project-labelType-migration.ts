@@ -9,16 +9,16 @@ export class createProjectLabelTypeMigration1596790559205 implements MigrationIn
       columns: [
         {
           name: 'id',
-          type: 'uuid',
+          type: 'varchar(36)',
           isPrimary: true,
         },
         {
           name: 'projectId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
         {
           name: 'labelId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
       ],
     }), true, true);

@@ -9,16 +9,16 @@ export class createUserProjectMigration1596791673156 implements MigrationInterfa
       columns: [
         {
           name: 'id',
-          type: 'uuid',
+          type: 'varchar(36)',
           isPrimary: true,
         },
         {
           name: 'userId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
         {
           name: 'projectId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
       ],
     }), true, true);

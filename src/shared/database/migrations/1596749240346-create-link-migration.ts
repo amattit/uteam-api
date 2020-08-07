@@ -9,7 +9,7 @@ export class createLinkMigration1596749240346 implements MigrationInterface {
       columns: [
         {
           name: 'id',
-          type: 'uuid',
+          type: 'varchar(36)',
           isPrimary: true,
         },
         {
@@ -31,11 +31,11 @@ export class createLinkMigration1596749240346 implements MigrationInterface {
         },
         {
           name: 'ownerId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
         {
           name: 'projectId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
       ],
     }), true, true);

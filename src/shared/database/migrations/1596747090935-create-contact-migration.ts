@@ -9,7 +9,7 @@ export class createContactMigration1596747090935 implements MigrationInterface {
       columns: [
         {
           name: 'id',
-          type: 'uuid',
+          type: 'varchar(36)',
           isPrimary: true,
         },
         {
@@ -31,7 +31,7 @@ export class createContactMigration1596747090935 implements MigrationInterface {
         },
         {
           name: 'ownerId',
-          type: 'uuid',
+          type: 'varchar(36)',
         },
       ],
     }), true, true);
