@@ -1,4 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface, QueryRunner, Table, TableForeignKey,
+} from 'typeorm';
 
 export class createLinkMigration1596749240346 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -37,6 +39,20 @@ export class createLinkMigration1596749240346 implements MigrationInterface {
         },
       ],
     }), true, true);
+
+    await queryRunner.createForeignKey('Link', new TableForeignKey({
+      columnNames: ['projectId'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'Project',
+      onDelete: 'CASCADE',
+    }));
+
+    await queryRunner.createForeignKey('Link', new TableForeignKey({
+      columnNames: ['ownerId'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'User',
+      onDelete: 'CASCADE',
+    }));
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

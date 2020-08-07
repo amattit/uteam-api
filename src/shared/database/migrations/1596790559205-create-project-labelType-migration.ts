@@ -1,4 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface, QueryRunner, Table, TableForeignKey,
+} from 'typeorm';
 
 export class createProjectLabelTypeMigration1596790559205 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -11,7 +13,7 @@ export class createProjectLabelTypeMigration1596790559205 implements MigrationIn
           isPrimary: true,
         },
         {
-          name: 'prjcetId',
+          name: 'projectId',
           type: 'int',
         },
         {
@@ -20,6 +22,20 @@ export class createProjectLabelTypeMigration1596790559205 implements MigrationIn
         },
       ],
     }), true, true);
+
+    await queryRunner.createForeignKey('ProjectLabelType_Relations', new TableForeignKey({
+      columnNames: ['projectId'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'Project',
+      onDelete: 'CASCADE',
+    }));
+
+    await queryRunner.createForeignKey('ProjectLabelType_Relations', new TableForeignKey({
+      columnNames: ['labelId'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'Label',
+      onDelete: 'CASCADE',
+    }));
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
