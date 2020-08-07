@@ -5,7 +5,7 @@ import {
 export class createProjectLabelTypeMigration1596790559205 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({
-      name: 'ProjectLabelType_Relations',
+      name: 'ProjectLabelType',
       columns: [
         {
           name: 'id',
@@ -23,14 +23,14 @@ export class createProjectLabelTypeMigration1596790559205 implements MigrationIn
       ],
     }), true, true);
 
-    await queryRunner.createForeignKey('ProjectLabelType_Relations', new TableForeignKey({
+    await queryRunner.createForeignKey('ProjectLabelType', new TableForeignKey({
       columnNames: ['projectId'],
       referencedColumnNames: ['id'],
       referencedTableName: 'Project',
       onDelete: 'CASCADE',
     }));
 
-    await queryRunner.createForeignKey('ProjectLabelType_Relations', new TableForeignKey({
+    await queryRunner.createForeignKey('ProjectLabelType', new TableForeignKey({
       columnNames: ['labelId'],
       referencedColumnNames: ['id'],
       referencedTableName: 'LabelType',
@@ -39,6 +39,6 @@ export class createProjectLabelTypeMigration1596790559205 implements MigrationIn
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('ProjectLabelType_Relations');
+    await queryRunner.dropTable('ProjectLabelType');
   }
 }
