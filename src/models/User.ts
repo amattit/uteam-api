@@ -1,6 +1,7 @@
 import {
-  Entity, Column, Generated, PrimaryColumn,
+  Entity, Column, Generated, PrimaryColumn, OneToMany,
 } from 'typeorm';
+import { Project } from './Project';
 
 @Entity()
 export class User {
@@ -29,5 +30,8 @@ export class User {
   @Column()
   about?: string;
 
+  @OneToMany(() => Project, (project) => project.user)
+  projects?: Project[];
   // TODO: Добавить ссылку на дочерние проекты
+  // TODO: добавить ссылку на контакты
 }

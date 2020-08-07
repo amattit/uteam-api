@@ -27,12 +27,12 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         },
         {
           name: 'aboutVacancy',
-          type: 'varchar',
+          type: 'varchar(3000)',
           isNullable: true,
         },
         {
           name: 'aboutFeature',
-          type: 'varchar',
+          type: 'varchar(3000)',
           isNullable: true,
         },
         {

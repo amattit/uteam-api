@@ -39,7 +39,7 @@ export class createUserMigration1596744182480 implements MigrationInterface {
           isNullable: true,
         },
         {
-          name: 'about',
+          name: 'about(6000)',
           type: 'varchar',
           isNullable: true,
         },

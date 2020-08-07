@@ -1,6 +1,9 @@
 import {
-  Entity, Column, Generated, PrimaryColumn,
+  Entity, Column, Generated, PrimaryColumn, ManyToOne,
 } from 'typeorm';
+
+// eslint-disable-next-line import/no-cycle
+import { User } from './User';
 
 @Entity()
 export class Project {
@@ -20,8 +23,6 @@ export class Project {
   @Column('timestamp')
   updated?: Date;
 
-  // Тут по идее должен быть пользователь
-  // TODO: уточнить
   @Column('uuid')
   ownerId!: string;
 
@@ -30,4 +31,8 @@ export class Project {
 
   @Column()
   isPublished!: boolean;
+
+  // Момент смущает
+  @ManyToOne(() => User, (user) => user.projects)
+  user!: User;
 }
