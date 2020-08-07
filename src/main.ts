@@ -39,7 +39,7 @@ const isDevelopment = nodeEnv === 'development';
   SwaggerModule.setup('/api', app, document);
 
   app.enableCors({
-    origin: isDevelopment ? /localhost/ : [/uteam/, /teamu-front/],
+    origin: isDevelopment ? /localhost/ : [/uteam/, /teamu-front/, /localhost/],
     credentials: true,
   });
 
