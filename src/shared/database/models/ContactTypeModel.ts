@@ -3,7 +3,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class LabelType {
+export class ContactTypeModel {
   @PrimaryColumn()
   @Generated('uuid')
   id?: string;

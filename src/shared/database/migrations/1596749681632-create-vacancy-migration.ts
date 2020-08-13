@@ -50,11 +50,13 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         {
           name: 'created',
           type: 'timestamp',
+          default: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'updated',
           type: 'timestamp',
           isNullable: true,
+          onUpdate: 'CURRENT_TIMESTAMP',
         },
       ],
     }), true, true);
