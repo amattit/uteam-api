@@ -17,17 +17,19 @@ export class createProjectMigration1596745744452 implements MigrationInterface {
           type: 'varchar',
         },
         {
-          name: 'description',
+          name: 'description(6000)',
           type: 'varchar',
         },
         {
           name: 'created',
           type: 'timestamp',
+          default: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'updated',
           type: 'timestamp',
           isNullable: true,
+          onUpdate: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'ownerId',

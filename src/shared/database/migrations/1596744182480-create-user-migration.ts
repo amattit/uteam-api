@@ -27,6 +27,7 @@ export class createUserMigration1596744182480 implements MigrationInterface {
         {
           name: 'created',
           type: 'timestamp',
+          default: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'imagePath',
@@ -40,7 +41,7 @@ export class createUserMigration1596744182480 implements MigrationInterface {
         },
         {
           name: 'about',
-          type: 'varchar',
+          type: 'varchar(6000)',
           isNullable: true,
         },
         {

@@ -27,12 +27,12 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         },
         {
           name: 'aboutVacancy',
-          type: 'varchar',
+          type: 'varchar(3000)',
           isNullable: true,
         },
         {
           name: 'aboutFeature',
-          type: 'varchar',
+          type: 'varchar(3000)',
           isNullable: true,
         },
         {
@@ -50,11 +50,13 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         {
           name: 'created',
           type: 'timestamp',
+          default: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'updated',
           type: 'timestamp',
           isNullable: true,
+          onUpdate: 'CURRENT_TIMESTAMP',
         },
       ],
     }), true, true);
