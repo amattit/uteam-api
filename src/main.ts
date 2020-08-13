@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { useContainer } from 'class-validator';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import helmet from 'helmet';
 import { AppModule } from './AppModule';
 
 declare const module: any;
@@ -27,6 +28,7 @@ const isDevelopment = nodeEnv === 'development';
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
+  app.use(helmet());
   app.setGlobalPrefix('api');
 
   const options = new DocumentBuilder()

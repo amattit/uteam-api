@@ -23,11 +23,13 @@ export class createLinkMigration1596749240346 implements MigrationInterface {
         {
           name: 'created',
           type: 'timestamp',
+          default: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'updated',
           type: 'timestamp',
           isNullable: true,
+          onUpdate: 'CURRENT_TIMESTAMP',
         },
         {
           name: 'ownerId',

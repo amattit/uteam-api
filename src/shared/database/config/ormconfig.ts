@@ -1,5 +1,13 @@
 import { ConnectionOptions } from 'typeorm';
 import { databaseConfig } from './databseConfig';
+import { ContactModel } from '../models/ContactModel';
+import { ContactTypeModel } from '../models/ContactTypeModel';
+import { LabelTypeModel } from '../models/LabelTypeModel';
+import { LinkModel } from '../models/LinkModel';
+import { ProjectModel } from '../models/ProjectModel';
+import { UserModel } from '../models/UserModel';
+import { UserTokenModel } from '../models/UserTokenModel';
+import { VacancyModel } from '../models/VacancyModel';
 
 const ormconfig: ConnectionOptions = {
   type: 'mysql',
@@ -8,7 +16,16 @@ const ormconfig: ConnectionOptions = {
   username: databaseConfig.userName,
   password: databaseConfig.password,
   database: databaseConfig.databaseName,
-  entities: [],
+  entities: [
+    ContactModel,
+    ContactTypeModel,
+    LabelTypeModel,
+    LinkModel,
+    ProjectModel,
+    UserModel,
+    UserTokenModel,
+    VacancyModel,
+  ],
   synchronize: true,
   migrations: ['src/shared/database/migrations/*.ts'],
   cli: {
