@@ -7,11 +7,11 @@ export interface Contact {
 
   link: string;
 
-  created: Date;
+  created?: Date;
 
   updated?: Date;
 
-  ownerId: string;
+  ownerId?: string;
 
   owner?: User;
 }

@@ -3,7 +3,7 @@ import {
 } from 'typeorm';
 import { LabelType } from '../../models/interfaces/LabelType';
 
-@Entity()
+@Entity({ name: 'LabelType' })
 export class LabelTypeModel implements LabelType {
   @PrimaryColumn()
   @Generated('uuid')

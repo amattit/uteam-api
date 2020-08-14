@@ -14,7 +14,7 @@ import { LabelTypeModel } from './LabelTypeModel';
 import { VacancyModel } from './VacancyModel';
 import { Project } from '../../models/interfaces/Project';
 
-@Entity()
+@Entity({ name: 'Project' })
 export class ProjectModel implements Project {
   @PrimaryColumn()
   @Generated('uuid')
@@ -42,11 +42,11 @@ export class ProjectModel implements Project {
   isPublished!: boolean;
 
   @ManyToMany(() => UserModel, (user) => user.projects)
-  @JoinTable()
+  @JoinTable({ name: 'UserProject' })
   users?: UserModel[];
 
   @ManyToMany(() => LabelTypeModel)
-  @JoinTable()
+  @JoinTable({ name: 'ProjectLabelType' })
   labels?: LabelTypeModel[];
 
   @OneToMany(() => LinkModel, (link) => link.project)

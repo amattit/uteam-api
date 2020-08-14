@@ -2,27 +2,43 @@ import { Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from '../../shared/repositories/user/UserRepository';
 import { User } from '../../shared/models/interfaces/User';
-import { LoginResponseEntity } from './model/LoginResponseEntity';
+import { TokenResponseEntity } from './model/TokenResponseEntity';
+import { SignUpRequestEntity } from './model/SignUpRequestEntity';
+import { ContactRepository } from '../../shared/repositories/contact/ContactRepository';
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject('UserRepository')
     private userRepository: UserRepository,
+    @Inject('ContactRepository')
+    private contactRepository: ContactRepository,
     private jwtService: JwtService,
   ) {}
 
-  async getHello(): Promise<string> {
-    let testUser: User | undefined = await this.userRepository.create({
-      created: new Date(),
-      email: 'example@gmail.com',
-      username: 'Example User',
-      password: 'example123',
+  async signUp(signUpInfo: SignUpRequestEntity): Promise<TokenResponseEntity> {
+    const {
+      email,
+      name: username,
+      openLandProfileLink,
+      password,
+      userRole: role,
+    } = signUpInfo;
+
+    const user = await this.userRepository.create({
+      email,
+      username,
+      password,
+      role,
     });
 
-    testUser = await this.userRepository.getById(testUser!.id!);
+    await this.contactRepository.create({ title: 'Openland', link: openLandProfileLink, owner: user });
 
-    return testUser!.email;
+    const { password: _, ...rest } = user;
+
+    return {
+      accessToken: this.jwtService.sign(rest),
+    };
   }
 
   async validateUser(email: string, pass: string): Promise<Omit<User, 'password'> | undefined> {
@@ -36,7 +52,7 @@ export class AuthService {
     return undefined;
   }
 
-  login(user: Omit<User, 'password'>): LoginResponseEntity {
+  login(user: Omit<User, 'password'>): TokenResponseEntity {
     return {
       accessToken: this.jwtService.sign(user),
     };

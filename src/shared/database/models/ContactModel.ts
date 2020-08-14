@@ -5,7 +5,7 @@ import {
 import { UserModel } from './UserModel';
 import { Contact } from '../../models/interfaces/Contact';
 
-@Entity()
+@Entity({ name: 'Contact' })
 export class ContactModel implements Contact {
   @PrimaryColumn()
   @Generated('uuid')
@@ -18,13 +18,13 @@ export class ContactModel implements Contact {
   link!: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created!: Date;
+  created?: Date;
 
   @Column({ type: 'timestamp', onUpdate: 'CURRENT_TIMESTAMP', nullable: true })
   updated?: Date;
 
   @Column('uuid')
-  ownerId!: string;
+  ownerId?: string;
 
   @ManyToOne(() => UserModel, (user) => user.contacts)
   owner?: UserModel;

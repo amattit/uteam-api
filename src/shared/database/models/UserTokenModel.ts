@@ -5,7 +5,7 @@ import {
 import { UserModel } from './UserModel';
 import { UserToken } from '../../models/interfaces/UserToken';
 
-@Entity()
+@Entity({ name: 'UserToken' })
 export class UserTokenModel implements UserToken {
   @PrimaryColumn()
   @Generated('uuid')
