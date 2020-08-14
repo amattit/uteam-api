@@ -27,7 +27,7 @@ export class UserModel implements User {
   password!: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created!: Date;
+  created?: Date;
 
   @Column({ nullable: true })
   imagePath?: string;
@@ -39,7 +39,7 @@ export class UserModel implements User {
   about?: string;
 
   @ManyToMany(() => ProjectModel, (project) => project.users)
-  @JoinTable()
+  @JoinTable({ name: 'UserProject' })
   projects?: ProjectModel[];
 
   @OneToMany(() => ContactModel, (contact) => contact.owner)

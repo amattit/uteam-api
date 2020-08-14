@@ -1,12 +1,8 @@
 import { Global, Module } from '@nestjs/common';
-import { ImageRepositoryModule } from './repositories/image/ImageRepositoryModule';
-import { DatabaseModule } from './database/DatabaseModule';
-import { UserRepositoryModule } from './repositories/user/UserRepositoryModule';
+import { RepositoryModule } from './repositories/RepositoryModule';
 
 const sharedModules = [
-  ImageRepositoryModule,
-  DatabaseModule,
-  UserRepositoryModule,
+  RepositoryModule,
 ];
 
 @Global()

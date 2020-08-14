@@ -7,7 +7,7 @@ import { UserModel } from './UserModel';
 import { ProjectModel } from './ProjectModel';
 import { Vacancy } from '../../models/interfaces/Vacancy';
 
-@Entity()
+@Entity({ name: 'Vacancy' })
 export class VacancyModel implements Vacancy {
   @PrimaryColumn()
   @Generated('uuid')

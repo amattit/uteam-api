@@ -7,7 +7,7 @@ import { UserModel } from './UserModel';
 import { ProjectModel } from './ProjectModel';
 import { Link } from '../../models/interfaces/Link';
 
-@Entity()
+@Entity({ name: 'Link' })
 export class LinkModel implements Link {
   @PrimaryColumn()
   @Generated('uuid')

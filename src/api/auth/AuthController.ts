@@ -4,8 +4,9 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './AuthService';
-import { AuthTags, LoginMethodDocs } from './docs';
+import { AuthTags, LoginMethodDocs, SignUpMethodDocs } from './docs';
 import { LoginRequestEntity } from './model/LoginRequestEntity';
+import { SignUpRequestEntity } from './model/SignUpRequestEntity';
 
 @Controller('v1')
 @AuthTags
@@ -21,7 +22,8 @@ export class AuthController {
   }
 
   @Post('/auth/signUp')
-  signUp(): Promise<string> {
-    return this.authService.getHello();
+  @SignUpMethodDocs
+  signUp(@Body() signUpInfo: SignUpRequestEntity) {
+    return this.authService.signUp(signUpInfo);
   }
 }

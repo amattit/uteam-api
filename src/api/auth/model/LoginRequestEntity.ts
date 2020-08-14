@@ -12,7 +12,7 @@ export class LoginRequestEntity {
 
   @ApiProperty({
     description: 'Пароль',
-    example: 'example-password123',
+    example: 'example123',
   })
   @IsNotEmpty()
   @Length(6, 255)

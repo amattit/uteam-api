@@ -14,7 +14,7 @@ export interface User {
 
   password: string;
 
-  created: Date;
+  created?: Date;
 
   imagePath?: string;
 
