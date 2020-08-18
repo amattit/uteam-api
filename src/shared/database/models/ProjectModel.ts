@@ -3,6 +3,7 @@ import {
   ManyToMany,
   OneToMany,
   JoinTable,
+  ManyToOne,
 } from 'typeorm';
 
 // eslint-disable-next-line import/no-cycle
@@ -27,7 +28,7 @@ export class ProjectModel implements Project {
   description!: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created!: Date;
+  created?: Date;
 
   @Column({ type: 'timestamp', onUpdate: 'CURRENT_TIMESTAMP', nullable: true })
   updated?: Date;
@@ -41,12 +42,15 @@ export class ProjectModel implements Project {
   @Column()
   isPublished!: boolean;
 
+  @ManyToOne(() => UserModel)
+  owner?: UserModel;
+
   @ManyToMany(() => UserModel, (user) => user.projects)
   @JoinTable({ name: 'UserProject' })
   users?: UserModel[];
 
   @ManyToMany(() => LabelTypeModel)
-  @JoinTable({ name: 'ProjectLabelType' })
+  @JoinTable({ name: 'ProjectLabelType', inverseJoinColumn: { name: 'labelId' } })
   labels?: LabelTypeModel[];
 
   @OneToMany(() => LinkModel, (link) => link.project)
