@@ -11,7 +11,7 @@ export interface Project {
 
   description: string;
 
-  created: Date;
+  created?: Date;
 
   updated?: Date;
 
@@ -20,6 +20,8 @@ export interface Project {
   imagePath?: string;
 
   isPublished: boolean;
+
+  owner?: User;
 
   users?: User[];
 

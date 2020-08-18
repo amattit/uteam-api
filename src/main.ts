@@ -35,6 +35,10 @@ const isDevelopment = nodeEnv === 'development';
     .setTitle('UTeam API')
     .setDescription('The UTeam API documentation')
     .setVersion('1.0')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'JWT',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

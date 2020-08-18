@@ -26,7 +26,8 @@ const ormconfig: ConnectionOptions = {
     UserTokenModel,
     VacancyModel,
   ],
-  synchronize: true,
+  synchronize: false,
+  charset: 'utf8mb4',
   migrations: ['src/shared/database/migrations/*.ts'],
   cli: {
     migrationsDir: 'src/shared/database/migrations',

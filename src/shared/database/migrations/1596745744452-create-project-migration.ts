@@ -17,8 +17,8 @@ export class createProjectMigration1596745744452 implements MigrationInterface {
           type: 'varchar',
         },
         {
-          name: 'description(6000)',
-          type: 'varchar',
+          name: 'description',
+          type: 'varchar(6000)',
         },
         {
           name: 'created',

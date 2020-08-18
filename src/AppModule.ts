@@ -9,5 +9,6 @@ import { ApiModule } from './api/ApiModule';
   ],
   controllers: [],
   providers: [],
+  exports: [SharedModule],
 })
 export class AppModule {}
