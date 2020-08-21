@@ -16,12 +16,23 @@ export class TypeormProjectRepository implements ProjectRepository {
     return this.projectGenericRepository.findOne(undefined, { where: { id } });
   }
 
+  getFullById(id: string): Promise<Project | undefined> {
+    return this.projectGenericRepository.createQueryBuilder('project')
+      .leftJoinAndSelect('project.owner', 'owner')
+      .leftJoinAndSelect('project.labels', 'labels')
+      .leftJoinAndSelect('project.vacancies', 'vacancies')
+      .leftJoinAndSelect('project.links', 'links')
+      .where('project.id = :id', { id })
+      .select(['project', 'owner', 'labels', 'links', 'vacancies'])
+      .getOne();
+  }
+
   getList(): Promise<Project[]> {
     return this.projectGenericRepository.createQueryBuilder('project')
       .leftJoinAndSelect('project.owner', 'owner')
       .leftJoinAndSelect('project.labels', 'labels')
       .where('project.isPublished = :isPublished', { isPublished: true })
-      .select(['project', 'owner.id', 'owner.username', 'owner.imagePath', 'owner.role', 'labels'])
+      .select(['project', 'owner', 'labels'])
       .getMany();
   }
 

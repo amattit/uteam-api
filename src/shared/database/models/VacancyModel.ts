@@ -41,7 +41,7 @@ export class VacancyModel implements Vacancy {
   aboutVacancy?: string;
 
   @Column()
-  aboutFeatures?: string;
+  aboutFeature?: string;
 
   @ManyToOne(() => UserModel, (user) => user.vacancies)
   owner?: UserModel;

@@ -4,6 +4,7 @@ import { useContainer } from 'class-validator';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from './AppModule';
+import { IdentifyAuthGuard } from './api/auth/guards/IdentifyAuthGuard';
 
 declare const module: any;
 
@@ -30,6 +31,7 @@ const isDevelopment = nodeEnv === 'development';
 
   app.use(helmet());
   app.setGlobalPrefix('api');
+  app.useGlobalGuards(new IdentifyAuthGuard());
 
   const options = new DocumentBuilder()
     .setTitle('UTeam API')

@@ -11,6 +11,7 @@ export const GettingProjectsMethodDocs = DecoratorHelper.composeDecorators(
 
 export const GettingProjectByIdMethodDocs = DecoratorHelper.composeDecorators(
   ApiOperation({ summary: 'Получение проекта по идентификатору' }),
+  ApiBearerAuth('JWT'),
 );
 
 export const CreatingProjectMethodDocs = DecoratorHelper.composeDecorators(

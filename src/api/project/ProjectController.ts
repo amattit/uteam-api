@@ -27,7 +27,7 @@ export class ProjectController {
 
   @Get(':id')
   @GettingProjectByIdMethodDocs
-  getProject(@Param('id') id: string): string {
+  getProject(@Param('id') id: string) {
     return this.projectService.getProject(id);
   }
 

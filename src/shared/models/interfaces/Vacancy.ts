@@ -22,7 +22,7 @@ export interface Vacancy {
 
   aboutVacancy?: string;
 
-  aboutFeatures?: string;
+  aboutFeature?: string;
 
   owner?: User;
 
