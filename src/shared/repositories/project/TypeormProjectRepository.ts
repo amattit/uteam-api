@@ -36,6 +36,16 @@ export class TypeormProjectRepository implements ProjectRepository {
       .getMany();
   }
 
+  getListByUserId(userId: string, isPublished: boolean): Promise<Project[]> {
+    return this.projectGenericRepository.createQueryBuilder('project')
+      .leftJoinAndSelect('project.owner', 'owner')
+      .leftJoinAndSelect('project.labels', 'labels')
+      .where('project.isPublished = :isPublished', { isPublished })
+      .andWhere('project.ownerId = :userId', { userId })
+      .select(['project', 'owner', 'labels'])
+      .getMany();
+  }
+
   async create(project: Project): Promise<Project> {
     const {
       generatedMaps: [{ id, created }],

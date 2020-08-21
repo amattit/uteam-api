@@ -19,6 +19,10 @@ export class ProjectService {
     return this.projectRepository.getList();
   }
 
+  getMyProjects(isPublished: boolean): Promise<Project[]> {
+    return this.projectRepository.getListByUserId(this.request.user!.id, isPublished);
+  }
+
   async getProject(id: string): Promise<Project> {
     const project = await this.projectRepository.getFullById(id);
 

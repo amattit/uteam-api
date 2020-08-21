@@ -1,6 +1,6 @@
 import {
   Body,
-  Controller, Delete, Get, Param, Post, Put, UseGuards,
+  Controller, Delete, Get, Param, Post, Put, UseGuards, Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ProjectService } from './ProjectService';
@@ -10,9 +10,10 @@ import {
   DeletingProjectMethodDocs,
   GettingProjectByIdMethodDocs,
   GettingProjectsMethodDocs,
-  UpdatingProjectMethodDocs, PublishingProjectMethodDocs, DraftingProjectMethodDocs,
+  UpdatingProjectMethodDocs, PublishingProjectMethodDocs, DraftingProjectMethodDocs, GettingMyProjectsMethodDocs,
 } from './docs';
 import { SavingProjectEntity } from './models/CreateProjectRequestEntity';
+import { MyProjectRequestQueryEntity } from './models/MyProjectRequestQueryEntity';
 
 @Controller('v1/project')
 @ProjectTags
@@ -23,6 +24,13 @@ export class ProjectController {
   @GettingProjectsMethodDocs
   getProjects() {
     return this.projectService.getProjects();
+  }
+
+  @Get('my')
+  @UseGuards(AuthGuard('jwt'))
+  @GettingMyProjectsMethodDocs
+  getMyProjects(@Query() { isPublished }: MyProjectRequestQueryEntity) {
+    return this.projectService.getMyProjects(!!isPublished);
   }
 
   @Get(':id')
