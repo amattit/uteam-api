@@ -1,6 +1,7 @@
 import {
   MigrationInterface, QueryRunner, Table, TableForeignKey,
 } from 'typeorm';
+import VacancyShareType from '../../models/enums/VacancyShareType';
 
 export class createVacancyMigration1596749681632 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -18,12 +19,8 @@ export class createVacancyMigration1596749681632 implements MigrationInterface {
         },
         {
           name: 'shareType',
-          type: 'varchar',
-        },
-        {
-          name: 'shareValue',
-          type: 'int',
-          isNullable: true,
+          type: 'enum',
+          enum: Object.values(VacancyShareType),
         },
         {
           name: 'aboutVacancy',

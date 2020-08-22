@@ -5,6 +5,7 @@ import { AuthModule } from './auth/AuthModule';
 import { ProjectModule } from './project/ProjectModule';
 import { LabelModule } from './label/LabelModule';
 import { LinkModule } from './link/LinkModule';
+import { VacancyModule } from './vacancy/VacancyModule';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { LinkModule } from './link/LinkModule';
     AuthModule,
     LabelModule,
     LinkModule,
+    VacancyModule,
     ProjectModule,
   ],
   controllers: [],

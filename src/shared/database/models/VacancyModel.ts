@@ -6,6 +6,7 @@ import { UserModel } from './UserModel';
 
 import { ProjectModel } from './ProjectModel';
 import { Vacancy } from '../../models/interfaces/Vacancy';
+import VacancyShareType from '../../models/enums/VacancyShareType';
 
 @Entity({ name: 'Vacancy' })
 export class VacancyModel implements Vacancy {
@@ -16,14 +17,14 @@ export class VacancyModel implements Vacancy {
   @Column()
   title!: string;
 
-  @Column()
-  shareType!: string;
-
-  @Column()
-  shareValue?: number;
+  @Column({
+    type: 'enum',
+    enum: VacancyShareType,
+  })
+  shareType!: VacancyShareType;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created!: Date;
+  created?: Date;
 
   @Column({ type: 'timestamp', onUpdate: 'CURRENT_TIMESTAMP', nullable: true })
   updated?: Date;
@@ -35,7 +36,7 @@ export class VacancyModel implements Vacancy {
   ownerId!: string;
 
   @Column()
-  isVacant!: Boolean;
+  isVacant!: boolean;
 
   @Column()
   aboutVacancy?: string;
