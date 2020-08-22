@@ -26,7 +26,7 @@ export class LinkModel implements Link {
   projectId!: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created!: Date;
+  created?: Date;
 
   @Column({ type: 'timestamp', onUpdate: 'CURRENT_TIMESTAMP', nullable: true })
   updated?: Date;

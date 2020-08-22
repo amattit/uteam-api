@@ -4,6 +4,7 @@ import { ImageModule } from './image/ImageModule';
 import { AuthModule } from './auth/AuthModule';
 import { ProjectModule } from './project/ProjectModule';
 import { LabelModule } from './label/LabelModule';
+import { LinkModule } from './link/LinkModule';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { LabelModule } from './label/LabelModule';
     PingModule,
     AuthModule,
     LabelModule,
+    LinkModule,
     ProjectModule,
   ],
   controllers: [],
