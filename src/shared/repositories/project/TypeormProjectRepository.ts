@@ -59,7 +59,10 @@ export class TypeormProjectRepository implements ProjectRepository {
   }
 
   async update(id: string, project: Partial<Project>): Promise<void> {
-    await this.projectGenericRepository.update({ id }, project);
+    await this.projectGenericRepository.save({
+      ...project,
+      id,
+    });
   }
 
   async delete(id: string): Promise<void> {

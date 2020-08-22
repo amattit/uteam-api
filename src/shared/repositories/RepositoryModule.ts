@@ -4,6 +4,7 @@ import { DatabaseModule } from '../database/DatabaseModule';
 import { UserRepositoryModule } from './user/UserRepositoryModule';
 import { ContactRepositoryModule } from './contact/ContactRepositoryModule';
 import { ProjectRepositoryModule } from './project/ProjectRepositoryModule';
+import { LabelRepositoryModule } from './label/LabelRepositoryModule';
 
 const sharedModules = [
   ImageRepositoryModule,
@@ -11,6 +12,7 @@ const sharedModules = [
   UserRepositoryModule,
   ContactRepositoryModule,
   ProjectRepositoryModule,
+  LabelRepositoryModule,
 ];
 
 @Global()
