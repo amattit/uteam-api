@@ -12,7 +12,7 @@ export interface Link {
 
   projectId: string;
 
-  created: Date;
+  created?: Date;
 
   updated?: Date;
 

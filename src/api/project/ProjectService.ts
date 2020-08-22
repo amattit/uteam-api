@@ -19,9 +19,18 @@ export class ProjectService {
     return this.projectRepository.getList();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  getProject(id: string): string {
-    return 'Hello World!';
+  getMyProjects(isPublished: boolean): Promise<Project[]> {
+    return this.projectRepository.getListByUserId(this.request.user!.id, isPublished);
+  }
+
+  async getProject(id: string): Promise<Project> {
+    const project = await this.projectRepository.getFullById(id);
+
+    if (project && this.hasRuleOnViewProject(project)) {
+      return project;
+    }
+
+    throw new NotFoundException('Project not found');
   }
 
   createProject(project: SavingProjectEntity): Promise<Project> {
@@ -86,5 +95,9 @@ export class ProjectService {
     const project = await this.projectRepository.getById(id);
 
     return project && project.ownerId === this.request.user?.id;
+  }
+
+  private hasRuleOnViewProject(project: Project) {
+    return project.isPublished || project.ownerId === this.request.user?.id;
   }
 }

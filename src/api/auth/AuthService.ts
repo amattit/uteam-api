@@ -41,15 +41,10 @@ export class AuthService {
     };
   }
 
-  async validateUser(email: string, pass: string): Promise<Omit<User, 'password'> | undefined> {
-    const user = await this.userRepository.getByEmail(email);
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
+  async validateUser(email: string, password: string): Promise<Omit<User, 'password'> | undefined> {
+    const user = await this.userRepository.getUserByEmailAndPassword(email, password);
 
-      return result;
-    }
-
-    return undefined;
+    return user;
   }
 
   login(user: Omit<User, 'password'>): TokenResponseEntity {

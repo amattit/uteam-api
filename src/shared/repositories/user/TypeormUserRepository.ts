@@ -16,12 +16,27 @@ export class TypeormUserRepository implements UserRepository {
     return this.userGenericRepository.findOne(undefined, { where: { id } });
   }
 
-  getByEmail(email: string): Promise<User | undefined> {
-    return this.userGenericRepository.findOne(undefined, { where: { email } });
+  async getUserByEmailAndPassword(email: string, passwordForCheck: string): Promise<Omit<User, 'password'> | undefined> {
+    const user = await this.userGenericRepository.findOne(
+      undefined,
+      {
+        where: { email },
+        select: ['id', 'password', 'email', 'role', 'created', 'about'],
+      },
+    );
+
+    if (user && await user?.checkIfUnencryptedPasswordIsValid(passwordForCheck)) {
+      const { password, ...rest } = user;
+
+      return rest;
+    }
+
+    return undefined;
   }
 
   async create(user: User): Promise<User> {
-    const { generatedMaps: [{ id, created }] } = await this.userGenericRepository.insert(user);
+    const entity = Object.assign(new UserModel(), user);
+    const { generatedMaps: [{ id, created }] } = await this.userGenericRepository.insert(entity);
 
     return {
       ...user,
