@@ -13,7 +13,11 @@ export class TypeormUserRepository implements UserRepository {
   ) {}
 
   getById(id: string): Promise<User | undefined> {
-    return this.userGenericRepository.findOne(undefined, { where: { id } });
+    return this.userGenericRepository.createQueryBuilder('user')
+      .leftJoinAndSelect('user.contacts', 'contact')
+      .where('user.id = :id', { id })
+      .select(['user', 'contact'])
+      .getOne();
   }
 
   async getUserByEmailAndPassword(email: string, passwordForCheck: string): Promise<Omit<User, 'password'> | undefined> {
@@ -45,7 +49,14 @@ export class TypeormUserRepository implements UserRepository {
     };
   }
 
+  async update(id: string, user: Partial<User>): Promise<void> {
+    await this.userGenericRepository.save({
+      ...user,
+      id,
+    });
+  }
+
   getAll(): Promise<User[]> {
-    return this.userGenericRepository.find();
+    return this.userGenericRepository.find({ order: { created: 'DESC' } });
   }
 }

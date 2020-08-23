@@ -33,6 +33,7 @@ export class TypeormProjectRepository implements ProjectRepository {
       .leftJoinAndSelect('project.labels', 'labels')
       .where('project.isPublished = :isPublished', { isPublished: true })
       .select(['project', 'owner', 'labels'])
+      .orderBy('project.created', 'DESC')
       .getMany();
   }
 
@@ -43,6 +44,7 @@ export class TypeormProjectRepository implements ProjectRepository {
       .where('project.isPublished = :isPublished', { isPublished })
       .andWhere('project.ownerId = :userId', { userId })
       .select(['project', 'owner', 'labels'])
+      .orderBy('project.created', 'DESC')
       .getMany();
   }
 
