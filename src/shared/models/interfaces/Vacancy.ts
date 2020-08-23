@@ -1,16 +1,15 @@
 import { Project } from './Project';
 import { User } from './User';
+import VacancyShareType from '../enums/VacancyShareType';
 
 export interface Vacancy {
   id?: string;
 
   title: string;
 
-  shareType: string;
+  shareType: VacancyShareType;
 
-  shareValue?: number;
-
-  created: Date;
+  created?: Date;
 
   updated?: Date;
 
@@ -18,7 +17,7 @@ export interface Vacancy {
 
   ownerId: string;
 
-  isVacant: Boolean;
+  isVacant: boolean;
 
   aboutVacancy?: string;
 
