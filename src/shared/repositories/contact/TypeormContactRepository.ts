@@ -21,4 +21,15 @@ export class TypeormContactRepository implements ContactRepository {
       created,
     };
   }
+
+  async update(id: string, contact: Partial<Contact>): Promise<void> {
+    await this.contactGenericRepository.save({
+      ...contact,
+      id,
+    });
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.contactGenericRepository.delete({ id });
+  }
 }

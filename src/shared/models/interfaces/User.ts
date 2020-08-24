@@ -18,6 +18,10 @@ export interface User {
 
   imagePath?: string;
 
+  location?: string;
+
+  phone?: string;
+
   role?: string;
 
   about?: string;

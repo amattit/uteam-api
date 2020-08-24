@@ -42,6 +42,12 @@ export class UserModel implements User {
   @Column({ nullable: true })
   about?: string;
 
+  @Column({ nullable: true })
+  phone?: string;
+
+  @Column({ nullable: true })
+  location?: string;
+
   @ManyToMany(() => ProjectModel, (project) => project.users)
   @JoinTable({ name: 'UserProject' })
   projects?: ProjectModel[];

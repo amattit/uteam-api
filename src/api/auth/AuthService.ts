@@ -32,7 +32,9 @@ export class AuthService {
       role,
     });
 
-    await this.contactRepository.create({ title: 'Openland', link: openLandProfileLink, owner: user });
+    if (openLandProfileLink) {
+      await this.contactRepository.create({ title: 'Openland', link: openLandProfileLink, owner: user });
+    }
 
     const { password: _, ...rest } = user;
 
