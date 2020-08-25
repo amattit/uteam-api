@@ -8,6 +8,7 @@ import { LinkModule } from './link/LinkModule';
 import { VacancyModule } from './vacancy/VacancyModule';
 import { UserModule } from './user/UserModule';
 import { ContactModule } from './contact/ContactModule';
+import { FavoritesModule } from './favorites/FavoritesModule';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ContactModule } from './contact/ContactModule';
     PingModule,
     AuthModule,
     ContactModule,
+    FavoritesModule,
     UserModule,
     LabelModule,
     LinkModule,
