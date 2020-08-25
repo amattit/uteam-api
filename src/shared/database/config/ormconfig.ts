@@ -9,6 +9,8 @@ import { UserModel } from '../models/UserModel';
 import { UserTokenModel } from '../models/UserTokenModel';
 import { VacancyModel } from '../models/VacancyModel';
 import { ProjectLabelTypeModel } from '../models/ProjectLabelTypeModel';
+import { FavoriteProjectModel } from '../models/FavoriteProjectModel';
+import { FavoriteUserModel } from '../models/FavoriteUserModel';
 
 const ormconfig: ConnectionOptions = {
   type: 'mysql',
@@ -27,6 +29,8 @@ const ormconfig: ConnectionOptions = {
     UserTokenModel,
     VacancyModel,
     ProjectLabelTypeModel,
+    FavoriteProjectModel,
+    FavoriteUserModel,
   ],
   synchronize: false,
   charset: 'utf8mb4',

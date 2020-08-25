@@ -7,6 +7,7 @@ import { ProjectRepositoryModule } from './project/ProjectRepositoryModule';
 import { LabelRepositoryModule } from './label/LabelRepositoryModule';
 import { ProjectLinkRepositoryModule } from './projectLink/ProjectLinkRepositoryModule';
 import { VacancyRepositoryModule } from './vacancy/VacancyRepositoryModule';
+import { FavoritesRepositoryModule } from './favorites/FavoritesRepositoryModule';
 
 const sharedModules = [
   ImageRepositoryModule,
@@ -17,6 +18,7 @@ const sharedModules = [
   LabelRepositoryModule,
   ProjectLinkRepositoryModule,
   VacancyRepositoryModule,
+  FavoritesRepositoryModule,
 ];
 
 @Global()
